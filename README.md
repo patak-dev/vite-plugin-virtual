@@ -11,7 +11,7 @@
 Install Vite Plugin Virtual:
 
 ```bash
-$ npm install -D vite-plugin-vite
+$ npm install -D vite-plugin-virtual
 ```
 
 Add to your `vite.config.js`:
