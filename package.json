@@ -1,0 +1,48 @@
+{
+  "name": "vite-plugin-virtual",
+  "description": "Virtual modules with HMR invalidation plugin for Vite",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "index.d.ts",
+  "license": "MIT",
+  "author": "patak-js <matias.capeletto@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/patak-js/vite-plugin-virtual"
+  },
+  "homepage": "https://github.com/patak-js/vite-plugin-virtual",
+  "bugs": "https://github.com/patak-js/vite-plugin-virtual/issues",
+  "files": [
+    "dist",
+    "index.d.ts"
+  ],
+  "scripts": {
+    "dev": "npm run build -- --watch --ignore-watch examples",
+    "build": "tsup src/index.ts --dts --format cjs,esm",
+    "prepublishOnly": "npm run build",
+    "release": "npx git-ensure -a && npx bumpp --commit --tag --push",
+    "example:dev": "npm -C examples/virtual-config run dev",
+    "example:build": "npm -C examples/virtual-config run build",
+    "example:serve": "npm -C examples/virtual-config run serve",
+    "test": "jest",
+    "lint": "eslint --fix --ext .js,.ts,.vue ./"
+  },
+  "peerDependencies": {
+    "vite": "^2.0.0"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.6.2",
+    "@types/jest": "^26.0.22",
+    "@types/node": "^14.14.37",
+    "@typescript-eslint/eslint-plugin": "^4.20.0",
+    "eslint": "^7.23.0",
+    "jest": "^26.6.3",
+    "jest-esbuild": "^0.1.5",
+    "rollup": "^2.44.0",
+    "ts-node": "^9.1.1",
+    "tsup": "^4.8.21",
+    "typescript": "^4.2.3",
+    "vite": "^2.1.5"
+  }
+}
