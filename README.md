@@ -22,11 +22,19 @@ import { virtual } from 'vite-plugin-virtual'
 export default {
   plugins: [
     virtual({
-      'virtual:module': 'export default { hello: 'world' }',
-      'virtual:object': { hello: 'world' }
+      'virtual:module': `export default { hello: 'world' }`,
+      'virtual:config': { hello: 'world' }
     })
   ]
 }
+```
+
+In your sources you can now import the virtual modules
+
+```js
+import obj from 'virtual:config'
+
+console.log(obj)
 ```
 
 ## Updating virtual modules
@@ -37,11 +45,11 @@ You can update the virtual module during dev
 import virtual, { updateVirtualModule } from 'vite-plugin-virtual'
 
 const plugin = virtual({
-  'virtual:module': 'export default { hello: 'world' }',
-  'virtual:object': { hello: 'world' }
+  'virtual:module': `export default { hello: 'world' }`,
+  'virtual:config': { hello: 'world' }
 })
 
-updateVirtualModule( plugin, 'virtual:object', { hello: 'new message' } )
+updateVirtualModule( plugin, 'virtual:config', { hello: 'new message' } )
 ```
 
 ## Manual invalidation
@@ -52,35 +60,22 @@ You can invalidate the virtual module during dev in case the config changes
 import virtual, { invalidateVirtualModule } from 'vite-plugin-virtual'
 
 const modules = {
-  'virtual:module': 'export default { hello: 'world' }',
-  'virtual:object': { hello: 'world' }
+  'virtual:module': `export default { hello: 'world' }`,
+  'virtual:config': { hello: 'world' }
 }
 
 const plugin = virtual(modules)
 
 const server: ViteDevServer
 
-modules['virtual:object'] = { hello: '!' }
-invalidateVirtualModule(server,'virtual:object')
+modules['virtual:config'] = { hello: 'new message' }
+invalidateVirtualModule(server, 'virtual:config')
 ```
 
+## Credits
 
-## Overview
-
-You can invalidate the virtual module during dev in case the config changes
-
-```js
-import virtual, { invalidateVirtualModule } from 'vite-plugin-virtual'
-
-const modules = 
-
-const plugin = virtual({
-  'virtual:module': 'export default { hello: 'world' }',
-  'virtual:object': { hello: 'world' }
-})
-
-updateVirtualModule(plugin, 'virtual:object', { hello: '!' })
-```
+- Adapted logic from [@rollup/plugin-virtual](https://github.com/rollup/plugins/tree/master/packages/virtual)
+- Project setup adopted from [@antfu's Vite plugins](https://github.com/antfu/vite-plugin-pwa) 
 
 ## License
 
