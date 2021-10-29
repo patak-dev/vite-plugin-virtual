@@ -17,7 +17,7 @@ $ npm install -D vite-plugin-virtual
 Add to your `vite.config.js`:
 
 ```js
-import { virtual } from 'vite-plugin-virtual'
+import virtual from 'vite-plugin-virtual'
 
 export default {
   plugins: [
