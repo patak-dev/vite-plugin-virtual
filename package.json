@@ -29,7 +29,7 @@
     "lint": "eslint --fix --ext .js,.ts,.vue ./"
   },
   "peerDependencies": {
-    "vite": "^2.0.0"
+    "vite": "^2.0.0 || ^3.0.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.6.2",
