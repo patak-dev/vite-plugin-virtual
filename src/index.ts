@@ -1,7 +1,7 @@
 import path from 'path'
-import type { Plugin, ViteDevServer, ModuleNode } from 'vite'
+import type { Plugin, ViteDevServer } from 'vite'
 
-export type VirtualModule = string | object
+export type VirtualModule = string | object | (() => string | object)
 
 export interface VirtualModules {
   [id: string]: VirtualModule
@@ -66,7 +66,8 @@ function virtual(modules: VirtualModules = {}): Plugin {
         const idNoPrefix = id.slice(VIRTUAL_PREFIX.length)
         const resolvedId = idNoPrefix in modules ? idNoPrefix : resolvedIds.get(idNoPrefix)
         if (resolvedId) {
-          const module = modules[resolvedId]
+          let module = modules[resolvedId]
+          module = typeof module === 'function' ? module() : module
           return typeof module === 'string' ? module : `export default ${JSON.stringify(module)}`
         }
       }

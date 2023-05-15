@@ -46,7 +46,8 @@ import virtual, { updateVirtualModule } from 'vite-plugin-virtual'
 
 const plugin = virtual({
   'virtual:module': `export default { hello: 'world' }`,
-  'virtual:config': { hello: 'world' }
+  'virtual:config': { hello: 'world' },
+  'virtual:something-else': () => return `Hello ${'computed'} world`,
 })
 
 updateVirtualModule( plugin, 'virtual:config', { hello: 'new message' } )
@@ -72,10 +73,29 @@ modules['virtual:config'] = { hello: 'new message' }
 invalidateVirtualModule(server, 'virtual:config')
 ```
 
+## Modifying the plugin
+
+If you are using this plugin to simplify building your own plugin, you may want to change the plugin name, and some other config.
+
+```js
+import type { Plugin } from 'vite'
+import virtual from 'vite-plugin-virtual'
+
+export function virtualPlugin(): Plugin {
+  return {
+    ...(virtual as any).default({
+      'virtual:your-plugin': 'export const hello = "world"',
+    }),
+    name: 'your-plugin:virtual',
+    enforce: 'post', // You can modify the plugin here.
+  }
+}
+```
+
 ## Credits
 
 - Adapted logic from [@rollup/plugin-virtual](https://github.com/rollup/plugins/tree/master/packages/virtual)
-- Project setup adopted from [@antfu's Vite plugins](https://github.com/antfu/vite-plugin-pwa) 
+- Project setup adopted from [@antfu's Vite plugins](https://github.com/antfu/vite-plugin-pwa)
 
 ## License
 
