@@ -1,7 +1,7 @@
 {
   "name": "vite-plugin-virtual",
   "description": "Virtual modules with HMR invalidation plugin for Vite",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "index.d.ts",
