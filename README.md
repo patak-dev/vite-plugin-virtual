@@ -73,25 +73,6 @@ modules['virtual:config'] = { hello: 'new message' }
 invalidateVirtualModule(server, 'virtual:config')
 ```
 
-## Modifying the plugin
-
-If you are using this plugin to simplify building your own plugin, you may want to change the plugin name, and some other config.
-
-```js
-import type { Plugin } from 'vite'
-import virtual from 'vite-plugin-virtual'
-
-export function virtualPlugin(): Plugin {
-  return {
-    ...(virtual as any).default({
-      'virtual:your-plugin': 'export const hello = "world"',
-    }),
-    name: 'your-plugin:virtual',
-    enforce: 'post', // You can modify the plugin here.
-  }
-}
-```
-
 ## Credits
 
 - Adapted logic from [@rollup/plugin-virtual](https://github.com/rollup/plugins/tree/master/packages/virtual)
