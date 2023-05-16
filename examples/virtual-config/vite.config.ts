@@ -9,19 +9,25 @@ const pluginVirtual = virtual({
   'virtual:counter': { counter }
 })
 
-const config = defineConfig({
-  plugins: [
-    pluginVirtual,
-    vue(),
-    restart({
-      restart: ['../../dist/*.js'],
-    }),
-  ],
-})
+const config = defineConfig(({ command }) => {
 
-setInterval(() => {
-  counter++
-  updateVirtualModule(pluginVirtual, 'virtual:counter', { counter })
-}, 2000)
+  if (command === 'serve') {
+    // Showcase how to invalidate the virtual module content
+    setInterval(() => {
+      counter++
+      updateVirtualModule(pluginVirtual, 'virtual:counter', { counter })
+    }, 2000)
+  }
+  
+  return {
+    plugins: [
+      pluginVirtual,
+      vue(),
+      restart({
+        restart: ['../../dist/*.js'],
+      }),
+    ],
+  }
+})
 
 export default config

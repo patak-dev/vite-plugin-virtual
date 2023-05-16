@@ -18,31 +18,28 @@
     "index.d.ts"
   ],
   "scripts": {
-    "dev": "npm run build -- --watch --ignore-watch examples",
+    "dev": "pnpm run build -- --watch --ignore-watch examples",
     "build": "tsup src/index.ts --dts --format cjs,esm",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "pnpm run build",
     "release": "npx git-ensure -a && npx bumpp --commit --tag --push",
-    "example:dev": "npm -C examples/virtual-config run dev",
-    "example:build": "npm -C examples/virtual-config run build",
-    "example:serve": "npm -C examples/virtual-config run serve",
-    "test": "jest",
+    "example:dev": "pnpm -C examples/virtual-config run dev",
+    "example:build": "pnpm -C examples/virtual-config run build",
+    "example:serve": "pnpm -C examples/virtual-config run serve",
+    "test": "vitest",
     "lint": "eslint --fix --ext .js,.ts,.vue ./"
   },
+  "packageManager": "pnpm@8.3.1",
   "peerDependencies": {
-    "vite": "^2.0.0 || ^3.0.0"
+    "vite": "^2.0.0 || ^3.0.0 || ^4.0.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.6.2",
-    "@types/jest": "^26.0.22",
-    "@types/node": "^14.14.37",
-    "@typescript-eslint/eslint-plugin": "^4.20.0",
-    "eslint": "^7.23.0",
-    "jest": "^26.6.3",
-    "jest-esbuild": "^0.1.5",
-    "rollup": "^2.44.0",
-    "ts-node": "^9.1.1",
-    "tsup": "^4.8.21",
-    "typescript": "^4.2.3",
-    "vite": "^2.1.5"
+    "@antfu/eslint-config": "^0.38.6",
+    "@types/node": "^20.1.5",
+    "@typescript-eslint/eslint-plugin": "^5.59.6",
+    "eslint": "^8.40.0",
+    "vitest": "^0.31.0",
+    "tsup": "^6.7.0",
+    "typescript": "^5.0.4",
+    "vite": "^4.3.6"
   }
 }
