@@ -46,7 +46,8 @@ import virtual, { updateVirtualModule } from 'vite-plugin-virtual'
 
 const plugin = virtual({
   'virtual:module': `export default { hello: 'world' }`,
-  'virtual:config': { hello: 'world' }
+  'virtual:config': { hello: 'world' },
+  'virtual:lazy': () => `Hello ${'computed'} world`,
 })
 
 updateVirtualModule( plugin, 'virtual:config', { hello: 'new message' } )
@@ -75,7 +76,7 @@ invalidateVirtualModule(server, 'virtual:config')
 ## Credits
 
 - Adapted logic from [@rollup/plugin-virtual](https://github.com/rollup/plugins/tree/master/packages/virtual)
-- Project setup adopted from [@antfu's Vite plugins](https://github.com/antfu/vite-plugin-pwa) 
+- Project setup adopted from [@antfu's Vite plugins](https://github.com/antfu/vite-plugin-pwa)
 
 ## License
 
