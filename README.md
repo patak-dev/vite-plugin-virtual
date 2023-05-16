@@ -47,7 +47,7 @@ import virtual, { updateVirtualModule } from 'vite-plugin-virtual'
 const plugin = virtual({
   'virtual:module': `export default { hello: 'world' }`,
   'virtual:config': { hello: 'world' },
-  'virtual:something-else': () => return `Hello ${'computed'} world`,
+  'virtual:lazy': () => `Hello ${'computed'} world`,
 })
 
 updateVirtualModule( plugin, 'virtual:config', { hello: 'new message' } )
