@@ -50,7 +50,7 @@ const plugin = virtual({
   'virtual:lazy': () => `Hello ${'computed'} world`,
 })
 
-updateVirtualModule( plugin, 'virtual:config', { hello: 'new message' } )
+updateVirtualModule(plugin, 'virtual:config', { hello: 'new message' })
 ```
 
 ## Manual invalidation

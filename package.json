@@ -1,21 +1,28 @@
 {
   "name": "vite-plugin-virtual",
-  "description": "Virtual modules with HMR invalidation plugin for Vite",
+  "type": "module",
   "version": "0.2.0",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "index.d.ts",
-  "license": "MIT",
+  "packageManager": "pnpm@8.3.1",
+  "description": "Virtual modules with HMR invalidation plugin for Vite",
   "author": "patak-js <matias.capeletto@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/patak-js/vite-plugin-virtual",
   "repository": {
     "type": "git",
     "url": "https://github.com/patak-js/vite-plugin-virtual"
   },
-  "homepage": "https://github.com/patak-js/vite-plugin-virtual",
   "bugs": "https://github.com/patak-js/vite-plugin-virtual/issues",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
-    "dist",
-    "index.d.ts"
+    "dist"
   ],
   "scripts": {
     "dev": "pnpm run build -- --watch --ignore-watch examples",
@@ -26,20 +33,19 @@
     "example:build": "pnpm -C examples/virtual-config run build",
     "example:serve": "pnpm -C examples/virtual-config run serve",
     "test": "vitest",
-    "lint": "eslint --fix --ext .js,.ts,.vue ./"
+    "lint": "eslint ."
   },
-  "packageManager": "pnpm@8.3.1",
   "peerDependencies": {
     "vite": "^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.38.6",
-    "@types/node": "^20.1.5",
-    "@typescript-eslint/eslint-plugin": "^5.59.6",
-    "eslint": "^8.40.0",
-    "vitest": "^0.31.0",
-    "tsup": "^6.7.0",
-    "typescript": "^5.0.4",
-    "vite": "^4.3.6"
+    "@antfu/eslint-config": "^2.6.4",
+    "@types/node": "^20.11.17",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "eslint": "^8.56.0",
+    "tsup": "^8.0.2",
+    "typescript": "^5.3.3",
+    "vite": "^5.1.1",
+    "vitest": "^1.2.2"
   }
 }

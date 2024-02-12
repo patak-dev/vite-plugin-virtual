@@ -1,8 +1,9 @@
-import { describe, test } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import virtual from '../src/index'
 
-describe('Virtual Plugin', () => {
-  test('virtual', () => {
+describe('virtual Plugin', () => {
+  it('virtual', () => {
     const virtualPlugin = virtual({ a: 'b' })
+    expect(virtualPlugin).toBeDefined()
   })
 })

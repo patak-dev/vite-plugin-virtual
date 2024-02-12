@@ -1,4 +1,4 @@
-import path from 'path'
+import path from 'node:path'
 import type { Plugin, ViteDevServer } from 'vite'
 
 export type VirtualModule = string | object | (() => string | object)
@@ -19,7 +19,7 @@ export function invalidateVirtualModule(server: ViteDevServer, id: string): void
     if (ws) {
       ws.send({
         type: 'full-reload',
-        path: '*'
+        path: '*',
       })
     }
   }
@@ -27,9 +27,8 @@ export function invalidateVirtualModule(server: ViteDevServer, id: string): void
 
 export function updateVirtualModule(plugin: Plugin, id: string, value: VirtualModule): void {
   const methods = pluginsMethods.get(plugin)
-  if (methods) {
+  if (methods)
     methods.update(id, value)
-  }
 }
 
 function virtual(modules: VirtualModules = {}): Plugin {
@@ -78,7 +77,7 @@ function virtual(modules: VirtualModules = {}): Plugin {
     update(id: string, value: VirtualModule) {
       modules[id] = value
       invalidateVirtualModule(server, id)
-    }
+    },
   })
   return plugin as Plugin
 }
