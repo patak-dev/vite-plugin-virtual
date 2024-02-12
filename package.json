@@ -1,7 +1,7 @@
 {
   "name": "vite-plugin-virtual",
   "type": "module",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "packageManager": "pnpm@8.3.1",
   "description": "Virtual modules with HMR invalidation plugin for Vite",
   "author": "patak-js <matias.capeletto@gmail.com>",
