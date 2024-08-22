@@ -73,6 +73,19 @@ modules['virtual:config'] = { hello: 'new message' }
 invalidateVirtualModule(server, 'virtual:config')
 ```
 
+## Types 
+
+To enable TypeScript IntelliSense for a virtual module, you need to declare the module:
+
+```ts
+// vite-env.d.ts
+declare module 'virtual:config' {
+  export const hello: string;
+}
+```
+   
+For more details about declaration, you can refer to the official Vite documentation on [IntelliSense for TypeScript](https://vitejs.dev/guide/env-and-mode#intellisense-for-typescript).
+
 ## Credits
 
 - Adapted logic from [@rollup/plugin-virtual](https://github.com/rollup/plugins/tree/master/packages/virtual)
