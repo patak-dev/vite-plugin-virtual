@@ -73,6 +73,18 @@ modules['virtual:config'] = { hello: 'new message' }
 invalidateVirtualModule(server, 'virtual:config')
 ```
 
+## Types
+
+To enable TypeScript IntelliSense for a virtual module, you can use ambient modules to declare the module in a `.d.ts` file included by your TS setup:
+
+```ts
+declare module 'virtual:config' {
+  export const hello: string;
+}
+```
+   
+For more details refer to the [TypeScript docs for ambient modules](https://www.typescriptlang.org/docs/handbook/modules/reference.html#ambient-modules).
+
 ## Credits
 
 - Adapted logic from [@rollup/plugin-virtual](https://github.com/rollup/plugins/tree/master/packages/virtual)
