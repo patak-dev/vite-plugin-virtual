@@ -84,7 +84,7 @@ declare module 'virtual:config' {
 }
 ```
    
-For more details about declaration, you can refer to the official Vite documentation on [IntelliSense for TypeScript](https://vitejs.dev/guide/env-and-mode#intellisense-for-typescript).
+For more details refer to the [TypeScript docs for ambient modules](https://www.typescriptlang.org/docs/handbook/modules/reference.html#ambient-modules).
 
 ## Credits
 
