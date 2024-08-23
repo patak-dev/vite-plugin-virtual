@@ -78,7 +78,6 @@ invalidateVirtualModule(server, 'virtual:config')
 To enable TypeScript IntelliSense for a virtual module, you need to declare the module:
 
 ```ts
-// vite-env.d.ts
 declare module 'virtual:config' {
   export const hello: string;
 }
